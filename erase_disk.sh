@@ -20,3 +20,7 @@ for _mappers in $(ls /dev/mapper/crypt_sd*); do mkfs.ext4 $_mappers; done
 for _partitions in $(fdisk -l | grep -i Linux | grep -v sda | grep -v loop |  awk '{ print $1}' | tr ":" " " | sort | cut -c 6-9); do mount /dev/mapper/crypt_$_partitions /mnt/delete/$_partitions; done
 ## Download some junks to fills all the drives
 for _path in $(df -h | grep mnt | grep -v cdrom | awk '{print $6}'); do wget -i /root/urls.txt -P $_path >> /dev/null 2>&1 & done
+
+## TODO
+
+
